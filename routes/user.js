@@ -55,6 +55,22 @@ router.get("/:idu",async(req,res)=>{
     }
 
 })
+//Description: Get one
+//path:http://localhost:5000/api/user/userfound/:_id
+//req.params
+router.get("/userfound/:id",async(req,res)=>{
+    try {
+        const {id}=req.params
+        const FoundUser=await User.findOne({id})
+        return res.status(200).send({msg:"User founded", FoundUser})
+        
+    } catch (error) {
+        res.status(400).send({msg:"User not founded",error})
+    }
+
+})
+
+
 //Description: upDate
 //path:http://localhost:5000/api/user/edit/:_id
 //req.params $$ req.body
